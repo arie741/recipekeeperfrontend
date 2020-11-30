@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function addRecipes(name, type, photos, description, steps,ingredients){
+export default async function editRecipe(name, type, photos, description, steps, ingredients, uid){
 	let formData = new FormData();
 
 	formData.append('name', name);
@@ -11,8 +11,9 @@ export default async function addRecipes(name, type, photos, description, steps,
 	formData.append('description', description);
 	formData.append('steps', JSON.stringify(steps));
 	formData.append('ingredients', JSON.stringify(ingredients));
+	formData.append('uid', uid);
 
-	let response = await axios.post(process.env.REACT_APP_FETCH_SOURCE + '/addrecipes', formData, {
+	let response = await axios.put(process.env.REACT_APP_FETCH_SOURCE + '/editrecipe', formData, {
 				    headers: {
 				      'Content-Type': 'multipart/form-data'
 				    }});

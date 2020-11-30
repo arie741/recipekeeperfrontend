@@ -1,4 +1,4 @@
-import React,  { useState } from 'react';
+import React,  { useState,useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 function IngreInput(props){
@@ -6,6 +6,7 @@ function IngreInput(props){
 		<div className="d-flex flex-row">
 			<input ref={props.refFunc} type="text" value={props.ingData.name} onChange={(e) => props.onChangeProps(props.ingData.id, 'name', e)} name={"ingre[" + props.nameIndex + "]"} placeholder="Ingredient"/>
 			<input ref={props.refFunc} type="text" value={props.ingData.qty} onChange={(e) => props.onChangeProps(props.ingData.id, 'qty', e)} name={"qty[" + props.nameIndex + "]"} placeholder="Quantity"/>
+			<input ref={props.refFunc} type="hidden" value={props.ingData.id} name={"ingId[" + props.nameIndex + "]"} placeholder="Id"/>
 		</div>
 	)
 }
@@ -18,6 +19,12 @@ export default function IngredientsInput(props){
 				qty: ''
 			}
 		]);
+
+	useEffect(() => {
+		if(props.initialValue){
+			setIngre(props.initialValue.ingredients)
+		}
+	},[props.initialValue]);
 
 	function deleteIngre(pid){
 		let deleteArr = [...ingre];
@@ -46,6 +53,7 @@ export default function IngredientsInput(props){
 			case 'qty':
 			updatedArr[objIndex].qty = event.target.value;
 			break;
+			default:
 		}
 		setIngre(updatedArr);
 

@@ -1,55 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import addRecipes from '../api/addRecipes';
 import {useForm} from 'react-hook-form';
-import Modal from 'react-modal';
 import StepsInputs from './StepsInputs';
 import IngredientsInput from './IngredientsInput';
-import { nanoid } from 'nanoid';
+import { useHistory } from 'react-router-dom';
 
 export default function AddModal(props){
 	const { register, handleSubmit } = useForm();
-	const [modalIsOpen,setIsOpen] = useState(false);
+	const history = useHistory();
+
 	const onSubmit = (data) => {
 		
 		let ingredients = [];
 
 		for(let i=0; i < data.ingre.length; i++){
 			ingredients.push({
-				id: nanoid(),
+				id: data.ingId[i],
 				name: data.ingre[i],
 				qty: data.qty[i]
 			})
 		}
 
 		addRecipes(data.name, data.type, data.photos, data.description, data.steps, ingredients).then(response => {
-			props.onAddRecipe(true)
-			setIsOpen(false)
+			history.push("/");
 		})
 	}
 
+	const cancelHandle = () => {
+		history.push("/");
+	}
+
 	return (
-			<div>
-				<button onClick={() => setIsOpen(true)}>Open Modal</button>
-				<Modal
-		          isOpen={modalIsOpen}
-		          onRequestClose={() => setIsOpen(false)}
-		          shouldCloseOnOverlayClick={false}
-		          contentLabel="Add Recipe Modal"
-		          ariaHideApp={false}
-		        >
-		          <button onClick={() => setIsOpen(false)}>close</button>
-		          <form className="formInput" onSubmit={handleSubmit(onSubmit)}>
+			<div>	
+				<form className="formInput" onSubmit={handleSubmit(onSubmit)}>
 		            <div className="d-flex flex-column">
 		            	<input type="text" name="name" ref={register} placeholder="name"/>	
-						<input type="text" name="type" ref={register} placeholder="type"/>	
+						<select name="type" ref={register} id="type">
+						  <option value="maincourse">Main Course</option>
+						  <option value="dessert">Dessert</option>
+						  <option value="appetizer">Appetizer</option>
+						  <option value="drink">Drink</option>
+						</select>
 						<input type="file" name="photos" ref={register} placeholder="photos" encType="multipart/form-data" multiple/>	
 						<input type="text" name="description" ref={register}  placeholder="description"/>	
-						<StepsInputs refFunc={register}/>
 						<IngredientsInput refFunc={register} />	
+						<StepsInputs refFunc={register}/>
+						<button onClick={() => cancelHandle()} type="button">Cancel</button>
 						<input type="submit" value="Add Recipe"/>
 		            </div>
-		          </form>
-		        </Modal>		
+		        </form>		
 			</div>
 		)
 }

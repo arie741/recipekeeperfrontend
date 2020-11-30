@@ -1,4 +1,4 @@
-import React,  { useState } from 'react';
+import React,  { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 function StepInput(props){
@@ -12,6 +12,19 @@ export default function StepsInputs(props){
 		id: nanoid(),
 		step: ''
 	}])
+
+	useEffect(() => {
+		if(props.initialValue){
+			let stepArr = props.initialValue.steps;
+			let formattedStepArr = stepArr.map(item => {
+				return {
+							id: nanoid(),
+							step: item,
+						}})
+
+			setSteps(formattedStepArr)
+		}
+	}, [props.initialValue])
 
 	function deleteStep(sid){
 		let deleteArr = [...steps];

@@ -10,7 +10,7 @@ import {
   useParams
 } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faHome, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 

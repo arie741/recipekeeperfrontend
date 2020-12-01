@@ -12,14 +12,17 @@ export default function DetailsModal(props){
 	const parseCategory = (cat) => {
 		switch(cat){
 			case 'maincourse':
-			return 'Main Course'
+				return 'Main Course';
+				break;
 			case 'drink':
-			return 'Drink'
+				return 'Drink';
+				break;
 			case 'dessert':
-			return 'Dessert'
+				return 'Dessert';
+				break;
 			case 'appetizer':
-			return 'Appetizer'
-			break;
+				return 'Appetizer';
+				break;
 			default:
 		}
 	}

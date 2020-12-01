@@ -96,7 +96,7 @@ export default function EditRecipe(props){
 						    	}
 							</div>	
 							<div className="photos-row">
-								<h5>Add More photos</h5>
+								<h5 className="photos-h">Add More photos</h5>
 								<input type="file" name="addphotos" ref={register} placeholder="photos" encType="multipart/form-data" multiple/>
 							</div>	
 							<div className="input-group desc-row">

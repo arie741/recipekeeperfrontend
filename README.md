@@ -4,7 +4,11 @@ Keeping recipes made easy.
 
 ## How to run
 
-In the project directory, you can run:
+Clone this repo
+
+### `git clone https://github.com/arie741/recipekeeperfrontend.git`
+
+Then, in the project directory, run:
 
 ### `yarn install`
 

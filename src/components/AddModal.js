@@ -57,7 +57,7 @@ export default function AddModal(props){
 		            	<div className="row">
 		            		<div className="col-lg-10">
 		            			<div className="photos-row">
-									<h4>Photos</h4>
+									<h4 className="photos-h">Photos</h4>
 									<input type="file" name="photos" ref={register} placeholder="photos" encType="multipart/form-data" multiple/>	
 								</div>
 

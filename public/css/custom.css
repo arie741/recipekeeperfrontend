@@ -242,11 +242,12 @@ ul {
 	margin-bottom: 20px
 }
 
-.photos-h {
-	margin-top:30px;
-}
-
-.edit-row .photos-row > * {
+.photos-row > * {
 	margin-right:30px;
 	border:1px solid #ced4da;
+}
+
+.photos-h {
+	margin-top:30px;
+	border:none;
 }

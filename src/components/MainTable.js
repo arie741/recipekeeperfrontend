@@ -11,7 +11,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export default function MainTable(){
 	const [recipes, setRecipes] = useState([]);
 	const [initialValues, setInitialValues] = useState([]);
-	const [submitting, isSubmitting] = useState(false);
+	const [submitting, isSubmitting] = useState(true);
 	const [showDetails, setShowDetails] = useState({});
 	const [modalIsOpen,setIsOpen] = useState(false);
 
@@ -78,6 +78,7 @@ export default function MainTable(){
 				{recipes.map(recipe => 
 					<RecipeRow data={recipe} key={recipe.uid} onClickHandle={onClickHandler}/>	
 					)}	
+				{submitting ? 'Loading...' : ''}
 				<DetailsModal isOpen={modalIsOpen} modalHandle={setIsOpen} data={showDetails} deleteHandle={deleteHandler}/>
 			</div>	
 		)

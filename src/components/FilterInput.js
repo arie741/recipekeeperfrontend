@@ -20,16 +20,26 @@ export default function FilterInput(props){
 	}
 
 	return (
-			<div>
-				<div>Filter By: </div>
-				<input onClick={(e) => onClickHandle(e)} type="checkbox" id="maincourse" name="categoryFilter" value="maincourse"/>
-				<label htmlFor="maincourse">Main Course</label>
-				<input onClick={(e) => onClickHandle(e)} type="checkbox" id="dessert" name="categoryFilter" value="dessert"/>
-				<label htmlFor="dessert">Dessert</label>
-				<input onClick={(e) => onClickHandle(e)} type="checkbox" id="appetizer" name="categoryFilter" value="appetizer"/>
-				<label htmlFor="appetizer">Appetizer</label>
-				<input onClick={(e) => onClickHandle(e)} type="checkbox" id="drink" name="categoryFilter" value="drink"/>
-				<label htmlFor="drink">Drink</label>
+			<div className="filter-by d-flex flex-row">
+				<div>Category: </div>
+				<div className="filter-checkboxes d-flex flex-row">
+					<div>
+						<input onClick={(e) => onClickHandle(e)} type="checkbox" id="maincourse" name="categoryFilter" value="maincourse"/>
+						<label htmlFor="maincourse">Main Course</label>
+					</div>	
+					<div>
+						<input onClick={(e) => onClickHandle(e)} type="checkbox" id="dessert" name="categoryFilter" value="dessert"/>
+						<label htmlFor="dessert">Dessert</label>
+					</div>	
+					<div>
+						<input onClick={(e) => onClickHandle(e)} type="checkbox" id="appetizer" name="categoryFilter" value="appetizer"/>
+						<label htmlFor="appetizer">Appetizer</label>
+					</div>
+					<div>
+						<input onClick={(e) => onClickHandle(e)} type="checkbox" id="drink" name="categoryFilter" value="drink"/>
+						<label htmlFor="drink">Drink</label>
+					</div>	
+				</div>
 			</div>	
 		)
 }

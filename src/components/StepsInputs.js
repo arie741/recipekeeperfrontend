@@ -50,13 +50,13 @@ export default function StepsInputs(props){
 	return (
 		<div>
 			{steps.map((item, index) => 
-				<div className="stepInputs" key={item.id}>
-					{index+1}
+				<div className="stepInputs d-flex flex-row" key={item.id}>
+					{index+1}. 
 					<StepInput onChangeProps={onChangeHandle} refFunc={props.refFunc} stepId={item.id} stepVal={item.step} name={"steps[" + index + "]"}/>
-					<button type="button" onClick={() => deleteStep(item.id)}>Delete</button>
+					<button className="btn btn-secondary" type="button" onClick={() => deleteStep(item.id)}>X</button>
 				</div>
 			)}
-			<button onClick={() => addStepsHandle()} type="button">Add Steps</button>
+			<button className="btn btn-info add-steps" onClick={() => addStepsHandle()} type="button">Add Steps</button>
 		</div>	
 		)
 }

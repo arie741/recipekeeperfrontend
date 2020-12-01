@@ -59,31 +59,71 @@ export default function EditRecipe(props){
 	}
 
 	return (
-			<div>	
-				<form className="formInput" onSubmit={handleSubmit(onSubmit)}>
-		            <div className="d-flex flex-column">
-		            	<input type="text" name="name" ref={register} placeholder="name"/>	
-						<select name="type" ref={register} id="type">
-						  <option value="maincourse">Main Course</option>
-						  <option value="dessert">Dessert</option>
-						  <option value="appetizer">Appetizer</option>
-						  <option value="drinkdrink">Drink</option>
-						</select>
-						{photos.photos.length === 0 ? <div>No photos yet</div> : ''}
-				    	{photos.photos.map((item, index) => 
-				    			<div className="d-flex flex-row" key={'photos' + index}>
-				    				<img className="photosThumb" src={process.env.REACT_APP_IMG_SOURCE + item} alt={(process.env.REACT_APP_IMG_SOURCE + '/foodplaceholder.png')}/>
-				    				<button type="button" onClick={() => onDeleteImageHandler(props.recipeId, item)}> Delete </button>
-				    			</div>	
-				    		)
-				    	}
-						<input type="file" name="addphotos" ref={register} placeholder="photos" encType="multipart/form-data" multiple/>	
-						<input type="text" name="description" ref={register}  placeholder="description"/>	
-						<IngredientsInput refFunc={register} initialValue={recipe.ingredients}/>	
-						<StepsInputs refFunc={register} initialValue={recipe.steps}/>
-						<button onClick={() => cancelHandle()} type="button">Cancel</button>
-						<input type="submit" value="Edit Recipe"/>
+			<div className="content-wrapper">	
+				<form className="formInput edit-row" onSubmit={handleSubmit(onSubmit)}>
+		            <div className="row">
+		            	<div className="d-flex flex-column col-lg-6">
+			            	<div className="input-group">
+							    <div className="input-group-prepend">
+							     	<span className="input-group-text" id="">Name</span>
+							    </div>
+							    <input className="form-control" type="text" name="name" ref={register} placeholder="name"/>	
+							</div>
+			            	
+			            </div>
 		            </div>
+		            <div className="row">
+		            	<div className="col-lg-10">
+			            	<div className="input-select">
+			            		<h4>Category</h4>
+			            		<select name="type" ref={register} id="type">
+								  <option value="maincourse">Main Course</option>
+								  <option value="dessert">Dessert</option>
+								  <option value="appetizer">Appetizer</option>
+								  <option value="drinkdrink">Drink</option>
+								</select>
+			            	</div>
+
+			            	<h4 className="photos-h">Photos</h4>
+							<div className="photos-row d-flex flex-row">
+								{photos.photos.length === 0 ? <div>No photos yet</div> : ''}
+						    	{photos.photos.map((item, index) => 
+						    			<div className="d-flex flex-row" key={'photos' + index}>
+						    				<img className="photosThumb" src={process.env.REACT_APP_IMG_SOURCE + item} alt={(process.env.REACT_APP_IMG_SOURCE + '/foodplaceholder.png')}/>
+						    				<button type="button" onClick={() => onDeleteImageHandler(props.recipeId, item)}> Delete </button>
+						    			</div>	
+						    		)
+						    	}
+							</div>	
+							<div className="photos-row">
+								<h5>Add More photos</h5>
+								<input type="file" name="addphotos" ref={register} placeholder="photos" encType="multipart/form-data" multiple/>
+							</div>	
+							<div className="input-group desc-row">
+								<div className="input-group-prepend">
+								    <span className="input-group-text" id="">Description</span>
+								</div>
+								<input className="form-control" type="text" name="description" ref={register}  placeholder="description"/>	
+							</div>
+							
+							<div>
+								<h4>
+									Ingredients
+								</h4>
+								<IngredientsInput refFunc={register} initialValue={recipe.ingredients}/>	
+							</div>
+							<div>
+								<h4>
+									Steps
+								</h4>
+								<StepsInputs refFunc={register} initialValue={recipe.steps}/>
+							</div>
+		            	</div>
+		            </div>
+		            <div className="flex-row-reverse d-flex button-row">
+						<button className="btn btn-secondary" onClick={() => cancelHandle()} type="button">Cancel</button>
+						<input className="btn btn-primary" type="submit" value="Edit Recipe"/>
+					</div>
 		        </form>		
 			</div>
 		)

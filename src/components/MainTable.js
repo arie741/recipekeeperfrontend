@@ -68,7 +68,7 @@ export default function MainTable(){
 
 	return(
 			<div className="container">
-				<div className="input-group">
+				<div className="input-group search-input">
 				  <div className="input-group-prepend">
 				    <FontAwesomeIcon icon={faSearch} />
 				  </div>

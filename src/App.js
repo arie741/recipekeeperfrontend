@@ -9,21 +9,23 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faHome, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="sideNav">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/"><FontAwesomeIcon icon={faHome} /><span className="navText">Home</span></Link>
             </li>
             <li>
-              <Link to="/addrecipe">Add Recipe</Link>
+              <Link to="/addrecipe"><FontAwesomeIcon icon={faUtensils} /><span className="navText">Add Recipe</span></Link>
             </li>
-          </ul>
+          </ul>        
         </nav>
 
         <Switch>

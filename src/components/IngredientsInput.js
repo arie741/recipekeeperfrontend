@@ -62,14 +62,14 @@ export default function IngredientsInput(props){
 	return (
 		<div>
 			{ingre.map((item, index) => 
-				<div className="ingreInputs" key={item.id}>
-					{index+1}
+				<div className="ingreInputs flex-row d-flex" key={item.id}>
+					{index+1}. 
 					<IngreInput onChangeProps={onChangeHandle} refFunc={props.refFunc} ingData={item} nameIndex={index}/>
-					<button type="button" onClick={() => deleteIngre(item.id)}>Delete</button>
+					<button className="btn btn-secondary" type="button" onClick={() => deleteIngre(item.id)}>X</button>
 				</div>	
 			)
 			}
-			<button type="button" onClick={() => addIngreHandle()}>Add Ingredient</button>
+			<button className="btn btn-info add-ingredient" type="button" onClick={() => addIngreHandle()}>Add More Ingredient</button>
 		</div>	
 		)
 }
